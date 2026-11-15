@@ -1,0 +1,516 @@
+/* RGL Cars Automotores — Estilo Editorial Europeo & Stitch Theme */
+:root {
+  --color-paper: #f9f9f9;
+  --color-paper-alt: #EFECE4;
+  --color-paper-card: #FFFFFF;
+  --color-ink: #1D201D;
+  --color-ink-soft: #5C625B;
+  --color-hairline: rgba(29, 32, 29, 0.06);
+  --color-hairline-strong: rgba(29, 32, 29, 0.15);
+  --color-accent: #fd8650;
+  --color-accent-hover: #ffa67c;
+  --color-light-primary: #1E382B;
+  --color-whatsapp: #25D366;
+  --color-whatsapp-dark: #128C7E;
+}
+
+html {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Commissioner', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: clip;
+  background-color: var(--color-paper);
+  min-height: 100vh;
+}
+
+/* ========================================================================== */
+/* HERO SECTION: HEADER SUPERIOR + IMAGEN CON CLIP-PATH + HUECO INFERIOR      */
+/* ========================================================================== */
+
+/* Contenedor principal de todo el hero */
+.hero-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 10rem 1.5rem;
+}
+
+/* 1. Header Superior (Título, Reviews, Bajada y Buscador) */
+.hero-header {
+  width: 100%;
+  margin-bottom: 0rem;
+  margin-left: 4rem;
+  margin-top: 4rem;
+}
+
+.hero-rating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.hero-main-title {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2rem, 6.8vw, 4.25rem);
+  font-weight: 200;
+  line-height: 1.12;
+  letter-spacing: -0.025em -1.7px;
+  color: var(--color-ink);
+  margin-bottom: 1.25rem;
+}
+
+.hero-header-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.bg-\[\#C86D44\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 145 96) !important;
+}
+
+@media (min-width: 768px) {
+  .hero-header-bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 68%;
+  }
+}
+
+.hero-subtitle-text {
+  font-family: 'Commissioner', sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+  max-width: 540px;
+}
+
+.hero-search-box {
+  display: flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(29, 32, 29, 0.12);
+  border-radius: 9999px;
+  padding: 0.35rem 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 440px;
+}
+
+/* 2. Banner Showcase con Imagen Recortada */
+.hero-banner-container {
+  position: relative;
+  width: 100%;
+  max-width: 1148px;
+  height: 520px;
+  margin: 0 auto;
+}
+
+/* La imagen de fondo con el recorte clip-path */
+.hero-clipped-image,
+.contenedor-hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #CECFD1;
+  height: 100%;
+  /* background-image: url(../ims/HuyndaiSUV.png);
+  background-size: contain;
+  background-position: 0px -101px;
+  background-repeat: no-repeat;
+  */
+  border-radius: 24px;
+
+  /* Silueta del recorte generada */
+  clip-path: shape(from 15.85% 56.29%, line to 3.57% 56.29%, curve to 2.95% 56.27% with 3.37% 56.29%/3.16% 56.3%, curve to 0.32% 52.59% with 1.88% 56.11%/0.86% 54.84%, curve to 0% 49.76% with 0.11% 51.72%/0% 50.77%, line to 0% 16.27%, curve to 0.04% 14.7% with 0% 15.73%/0% 15.24%, curve to 2.44% 9.92% with 0.25% 11.95%/1.26% 9.94%, curve to 3.17% 9.92% with 2.68% 9.92%/2.92% 9.92%, line to 74.02% 9.87%, curve to 75.65% 9.24% with 74.6% 9.87%/75.12% 9.86%, curve to 77.02% 3.86% with 76.55% 8.2%/76.86% 6.03%, curve to 77.24% 2.07% with 77.07% 3.3%/77.13% 2.58%, curve to 78.07% 0.34% with 77.41% 1.28%/77.71% 0.65%, curve to 78.97% 0.01% with 78.35% 0.08%/78.67% 0.02%, curve to 82.29% 0.01% with 80.07% -0.01%/81.18% 0.01%, line to 98.84% 0.01%, curve to 100% 2.49% with 99.44% 0.01%/99.95% 1.06%, curve to 100% 3.21% with 100% 2.73%/100% 2.98%, line to 100% 96.98%, curve to 99.92% 98.24% with 100% 97.45%/100% 97.8%, curve to 98.9% 99.99% with 99.76% 99.26%/99.36% 99.95%, curve to 98.19% 99.99% with 98.67% 100.01%/98.43% 99.99%, line to 21.02% 99.99%, curve to 20.45% 99.91% with 20.82% 99.99%/20.64% 99.99%, curve to 18.27% 94.82% with 19.34% 99.5%/18.46% 97.44%, curve to 18.23% 93.09% with 18.23% 94.23%/18.23% 93.68%, line to 18.23% 63.34%, curve to 17.89% 59.49% with 18.23% 62%/18.15% 60.7%, curve to 15.85% 56.29% with 17.5% 57.66%/16.74% 56.29%, close);
+  background: linear-gradient(-45deg, #bfe3e2, #e6b58e, #ecebc7, #c4c6af, #c9cccc, #cadbdd, #f1ccb2);
+  background-size: 300% 300%;
+  animation: gradientBG 8s infinite linear alternate;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#hero-clipped-hover {
+  position: absolute;
+  width: 70%;
+  right: 60px;
+  bottom: -20px;
+  left: 64%;
+}
+
+/* 3. Bloque RGL-01 en el hueco inferior izquierdo */
+.hero-notch-card {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  width: 10%;
+  min-width: 195px;
+  max-width: 230px;
+  padding: 0 1rem 1rem 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--color-ink-soft);
+}
+
+.hero-notch-code {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--color-ink);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.hero-notch-edition {
+  font-family: 'Commissioner', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-ink-soft);
+  margin-top: 0.35rem;
+  display: block;
+}
+
+.hero-notch-desc {
+  font-family: 'Commissioner', sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--color-ink-soft);
+  margin-top: 0.5rem;
+}
+
+/* 4. Tarjetas y Botones Flotantes */
+.hero-floating-top {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(29, 32, 29, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-floating-top:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-floating-bottom {
+  position: absolute;
+  bottom: 2rem;
+  left: 23%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 10;
+}
+
+/* Adaptación responsive para pantallas medianas y móviles */
+@media (max-width: 900px) {
+  .hero-banner-container {
+    height: auto;
+  }
+
+  .hero-clipped-image,
+  .contenedor-hero {
+    position: relative;
+    height: 320px;
+    clip-path: none;
+    /* En pantallas móviles la foto se ve completa */
+  }
+
+  .hero-notch-card {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    padding: 1.25rem 0 0 0;
+  }
+
+  .hero-floating-bottom {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    margin-top: 1rem;
+  }
+}
+
+
+#texto-footer {
+  padding-top: 40vh !important;
+}
+
+/* Tipografías oficiales */
+.font-editorial-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.font-headline {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-label {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-body {
+  font-family: 'Commissioner', sans-serif;
+}
+
+.font-mono-data {
+  font-family: 'Red Hat Mono', monospace;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+/* Kickers y subtítulos con tracking amplio */
+.kicker-editorial {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.725rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+/* Hairlines sutiles */
+.hairline-b {
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.hairline-t {
+  border-top: 1px solid var(--color-hairline);
+}
+
+.hairline-all {
+  border: 1px solid var(--color-hairline);
+}
+
+/* Badges de catálogo y vitrina */
+.badge-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.685rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  border-radius: 9999px;
+  background-color: rgba(29, 32, 29, 0.05);
+  color: var(--color-ink);
+  border: 1px solid var(--color-hairline);
+}
+
+.badge-editorial.badge-accent {
+  background-color: rgba(200, 109, 68, 0.12);
+  color: var(--color-accent);
+  border-color: rgba(200, 109, 68, 0.25);
+}
+
+.badge-editorial.badge-bna {
+  background-color: #EBF4FA;
+  color: #0E5C8A;
+  border-color: rgba(14, 92, 138, 0.2);
+}
+
+.badge-editorial.badge-primary {
+  background-color: var(--color-light-primary);
+  color: #FFFFFF;
+}
+
+/* Tarjeta de vehículo editorial */
+.car-card-editorial {
+  background: #FFFFFF;
+  border: 1px solid var(--color-hairline);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  position: relative;
+}
+
+.car-card-editorial:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-hairline-strong);
+  box-shadow: 0 16px 36px -12px rgba(29, 32, 29, 0.08);
+}
+
+/* Botón WhatsApp */
+.btn-whatsapp {
+  background-color: var(--color-whatsapp);
+  color: #FFFFFF;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--color-whatsapp-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
+
+/* ========================================================================== */
+/* FOOTER LIMPIO CON TRACK DE SCROLL DEDICADO                                 */
+/* ========================================================================== */
+#footer-scroll-track {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* Da 200vh de scroll físico ininterrumpido */
+  background-color: linear-gradient(to bottom, var(--color-paper), transparent);
+
+}
+
+#overlay_vid {
+  background: linear-gradient(to bottom, var(--color-paper), #adb4b300);
+  width: 100%;
+  height: 60vh;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero-texto-card {
+  color: var(--color-paper-card);
+  position: absolute;
+  top: 80px;
+  left: 40px;
+}
+
+.hero-texto-card span {
+  color: var(--color-paper-card);
+}
+
+#footer-section {
+  position: sticky;
+  top: 0;
+  left: 0;
+  margin-top: 100px;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  will-change: transform;
+}
+
+/* Video full-bleed nítido, sin filtros oscuros */
+.footer-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+  filter: none !important;
+}
+
+/* Contenido sobre el video con tarjetas glass claras como en Stitch */
+.footer-content {
+  position: relative;
+  z-index: 3;
+}
+
+/* Scroll horizontal anclado */
+.horizontal-scroll-container {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  margin-top: 100px;
+}
+
+.horizontal-track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  gap: 1.5rem;
+  padding-left: max(1.5rem, calc((100vw - 1280px) / 2));
+  padding-right: max(1.5rem, calc((100vw - 1280px) / 2));
+}
+
+/* Modal y Drawers */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  background-color: rgba(18, 20, 19, 0.6);
+}
+
+/* Chat Asistente Virtual */
+.ai-bubble-btn {
+  background: var(--color-light-primary);
+  color: #FFFFFF;
+  box-shadow: 0 10px 25px -5px rgba(30, 56, 43, 0.4);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.ai-bubble-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 14px 30px -4px rgba(30, 56, 43, 0.5);
+}
+
+/* Transiciones de pestañas */
+.view-panel {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.view-panel.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8D4CA;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B6B0A2;
+}

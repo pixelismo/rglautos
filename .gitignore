@@ -1,0 +1,19 @@
+# Sistema y dependencias
+.DS_Store
+Thumbs.db
+.agents/
+
+# Videos de prueba/backups pesados (GitHub tiene límite de 100MB por archivo)
+# Dejamos solo los que realmente se usan en la web
+ims/*backup*.mp4
+ims/*original*.mp4
+ims/footer_bg.mp4
+ims/footer_bg2.mp4
+ims/footer_scrub.mp4
+ims/video_scrub.mp4
+
+# Documentos internos / presupuestos
+*.vectorcraft
+*.pdf
+*.rtf
+CRUDOS/
