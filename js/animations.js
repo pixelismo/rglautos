@@ -212,7 +212,7 @@ gsap.fromTo(scrollhero,
       trigger: scrollhero, // El elemento que activa la animación
       start: "top bottom",           // Empieza cuando el contenedor entra por abajo
       end: "bottom top",             // Termina cuando sale por arriba
-      scrub: 5                    // Vincula el progreso directamente a la barra de scroll
+      scrub: 1                    // Vincula el progreso directamente a la barra de scroll
     }
   }
 );

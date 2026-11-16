@@ -32,19 +32,19 @@ const VEHICLES_DATA = [
     ],
     images: [
       {
-        url: "https://lh3.googleusercontent.com/aida/ALJJyrCL8Yewpxl6xgghGxCoHSt7DhgF0OzK9sdSA5Xb4QluFC0fhmlstlby7lTbuXC6-8yGHm-1D5UezsYwMTXbmPowTApMW_PvflB0nOggenQsbsAYnnEqAZadXTEL1eu3-a93ejxXlV74BOlK_7eLnis-oyEue3_bUIk3CWv_r_RDhFYUyPCQJGizgpMdorgQmU3DTsayMIFU9S7JvXNcWIFSKMpUMZm4DwAetKV_YIzZN5cDBbsTZ7S2a8ftF2SdG5IXvdfxr-4",
-        caption: "Vista exterior principal de estudio",
+        url: "ims/jeep_compass_ext.jpg",
+        caption: "Vista exterior principal",
         alt: "Jeep Compass Limited 2025"
       },
       {
-        url: "https://lh3.googleusercontent.com/aida/ALJJyrCf8_zTv1Bn_mEamfj0OfAsMUUPhDTh8tdx4GHYRSn1dwbk803eOIoJ0pHpOxi54izHrZjMYhSzVPCNc_TcH8Ke2y4kfmsNRZCpXu7McdV5pTWhhYvtpA13uAj69gu-QsNgbe4fFjnNfMJZK159js0RPYCkRarhjUJlizO_kYgR2DD8ibUe-X2M104JbgYMQb2rGRvtG3_4yl6NiBlPVMhq61Cjum-4EN6yLzvGzOJDXq9M7sRNM5WsEZabe54JPOTGxTsjEOcU9EDK",
+        url: "ims/jeep_compass_int.jpg",
         caption: "Interior tapizado en cuero premium",
         alt: "Interior cuero Jeep Compass"
       },
       {
-        url: "https://lh3.googleusercontent.com/aida/ALJJyrAv67f7L2uGGE9GENYyPGsO47_5CJCAkZOLQE5epw6HC6PuUz7kBuwsomjgTBfXFcz0DJ6roXEaizs_kwAqHVyjAa4EknT2sSdVV4b0GzLEUfSq_y-TYQYHFqbmFQXcM87xHTBDROorkWrnlz2L0rzZoxoL4L-TgZ1MDb1NrTKTbVxh1_XhZQgngbJ4W59Cq6Ny6gn2qI0j8kVt3bq01_4t2Dj1mG1HMs3laNoo4XEZx7NZQtKiYydXprTTMy1neJDurDrAb_42vQ",
-        caption: "Techo panorámico de cristal corredizo",
-        alt: "Techo panorámico Jeep Compass"
+        url: "ims/jeep_compass_rear.jpg",
+        caption: "Vista posterior y detalles",
+        alt: "Jeep Compass vista posterior"
       },
       {
         url: "ims/Vehicle_driving_on_snowy_road_412c06cd_2K.jpg",
@@ -79,8 +79,8 @@ const VEHICLES_DATA = [
     ],
     images: [
       {
-        url: "https://lh3.googleusercontent.com/aida/ALJJyrC3YL-I9Ld4LQgVVFnwBwWpGWM_Klrp83HDI5sx6zNooaUw5WWspUTqF4Br-mm7P7pzALfkifmjrqeUD6le4D0noHzFxdHuMFllZy3aDZCHl6kxAf6Xo-7pon31EUHl4hsgaCAOMKnM7fggkgDYlD8G6Zc2va79uQztLPhnPQHgwLzvhhypNlXO4dy9u0zKHZSzGGvbgYCbH3wPK9KelmGHZqzIF7f3ToeVNVfBb0W7ct8eaYNhkZ681VFk7pr4X1I",
-        caption: "Vista lateral Ford Ranger 3.2",
+        url: "ims/ford_ranger_ext.jpg",
+        caption: "Vista exterior Ford Ranger 3.2",
         alt: "Ford Ranger 4x2 3.2 2020"
       }
     ]
@@ -111,7 +111,7 @@ const VEHICLES_DATA = [
     ],
     images: [
       {
-        url: "https://lh3.googleusercontent.com/aida/ALJJyrBNoWCpF4BeuKkmwGl-L-fLbwGeyReJEOr28qzYoleI9Ggjdj20L6IGQdYZdAbMJz1klR1iV3GJC1BmRNIjyl8KSy1WhIOIyqIY9T2ls_6pzZgoiJvQrWCMLTDhxuNAv5DsVSNtf6UIOwCwrA1cSNr7J517ott9uYahwlb9CuZmbSHTlV_-kA_-cJTgC6E5mmDxjCgyGNGtJzSTSxSM47zOtpsE6Jh9Q1zSao_vKHVaPzE7bx5-DtnxP86jK_RbFA",
+        url: "ims/fiat_palio_ext.jpg",
         caption: "Fiat Palio Essence perfil exterior",
         alt: "Fiat Palio Essence 2016"
       }
@@ -143,7 +143,7 @@ const VEHICLES_DATA = [
     ],
     images: [
       {
-        url: "https://lh3.googleusercontent.com/aida/ALJJyrBB38mNru_8BrYn2rtvxiWz8c0J2rTNqO73ttGHwQB5NfFoiqqxXciAyWonj9-hhclPBzhpt6i5Q_W4pYR_z_kwbNaHjFBxBQkL3JRv6x6P8Zznp_aSeqdsg5uQUUPvb31FDlfIB-fg8vnrK95QUurs2u5-PRz4XjcqZSBjE7lC5acP9jGpcqFp5vixMjfxzrsddIXhTwMyRfXsczIu61TZcMjtgvz5ZzRVaJrysbeJjRWeIwQSPNTF9lTFvy6heXI",
+        url: "ims/peugeot_208_ext.jpg",
         caption: "Peugeot 208 vista exterior",
         alt: "Peugeot 208 2016"
       }
@@ -175,7 +175,7 @@ const VEHICLES_DATA = [
     ],
     images: [
       {
-        url: "https://lh3.googleusercontent.com/aida/ALJJyrARKspU04EKt4qDSJ6DyUVg2_zaj8L7eZ-d8Q7UpnFqoiNa3gikA1Uk_hsTB0NoERIM-l6nL2eW5zXbTPmDrBSGnl6Qwg8s95mUApV6Jz3PCjODArpyKIeosI28IKEpG0DcHgFGuvF1NjESNmoaEX8GWZnxLC6plFIwSIu-DusB7wbbMFuOd3a2y4Xu-M5BoHVoIf1FSDIGyYbwm5aBl-eZkRkgQM0dGTyD1EUm9-2tTIYU2pwtEgKLU_cAPjNo_d24gbGZ",
+        url: "ims/chevrolet_tracker_ext.jpg",
         caption: "Chevrolet Tracker en entorno patagónico",
         alt: "Chevrolet Tracker 4x4 AT 2016"
       }
@@ -207,7 +207,7 @@ const VEHICLES_DATA = [
     ],
     images: [
       {
-        url: "https://lh3.googleusercontent.com/aida/ALJJyrA5Luma3zynEbacV5Re91KBJ3tFYg1da7YaOgL9xf7IAJwFIQhYKB20WsPZGATvlRbmdpofabIlWyBnvGRq9QqK2Ni7jo7G7Bk7D-N38fmg9h07sz3bSYbx5u93dcqkpcQ-Nh5JhS0XOBOvPzg8kXnKwAmNJ7I_cFgj-poPcaZb6qTD9mwnK_9mBqsQRA-MWfM4Ap6OAaN3l4MJAplzrst4SpuyGhJ0rTzFahhk8P_wMa-0hN9pfsapcKti5Q-M",
+        url: "ims/fiat_toro_ext.jpg",
         caption: "Fiat Toro Freedom perfil exterior",
         alt: "Fiat Toro Freedom 1.8 AT 2020"
       }
@@ -239,8 +239,8 @@ const VEHICLES_DATA = [
     ],
     images: [
       {
-        url: "https://lh3.googleusercontent.com/aida/ALJJyrA5Luma3zynEbacV5Re91KBJ3tFYg1da7YaOgL9xf7IAJwFIQhYKB20WsPZGATvlRbmdpofabIlWyBnvGRq9QqK2Ni7jo7G7Bk7D-N38fmg9h07sz3bSYbx5u93dcqkpcQ-Nh5JhS0XOBOvPzg8kXnKwAmNJ7I_cFgj-poPcaZb6qTD9mwnK_9mBqsQRA-MWfM4Ap6OAaN3l4MJAplzrst4SpuyGhJ0rTzFahhk8P_wMa-0hN9pfsapcKti5Q-M",
-        caption: "Fiat Toro 4x2",
+        url: "ims/fiat_toro_manual.jpg",
+        caption: "Fiat Toro 4x2 manual",
         alt: "Fiat Toro 4x2 manual 2018"
       }
     ]
@@ -271,7 +271,7 @@ const VEHICLES_DATA = [
     ],
     images: [
       {
-        url: "https://lh3.googleusercontent.com/aida/ALJJyrBlEt1wpM6cDN_oqH0m3BPJpUbaPqstwWldcF9ByRmq6vY_07PCqFHt8qh1aIA97t-0SZ088Z8dyWMmMwhYUGZUFJBZXAYUfmJEBeo5xCX8HZ7b2kvaultxdecThsh7KOdJ6pUIHXqYlV-WyNDIPZEBKe6KjpwXMMvM_NXy0tlnRtD93vLplqH_Q9DcLKuBOvbNGTJ3dbe3Ph63fH5Apx-mf1Kx5-OBVXhxngnhWPNS53CmxxZ_pX2MDcwQT6M",
+        url: "ims/vw_suran_ext.jpg",
         caption: "Volkswagen Suran exterior",
         alt: "VW Suran 2017"
       }
@@ -303,7 +303,7 @@ const VEHICLES_DATA = [
     ],
     images: [
       {
-        url: "https://lh3.googleusercontent.com/aida/ALJJyrDWnJVWOI4oqYIYyuGAg8CT35Qk4IHx_r3vmPFDKdYzRV8KwO8pMJD_1aPFJKXzcArREtsoXxPTU91-OQd1hk8vgbLRNcD7q6yFyHwZ7E7trewWL5FoWBJNCD2zxfR5jPIzErU26dt6Y9l7Ye7gwNSqeuOZEEkKvNKzN2C7jFndYad-jmYfUZBM15d6Kw9ct2exU2VzGlLBNgxVsT_ql5CZ9Jqf-r3V8ffkudXyh9DQTp9sKqSZxdVFn1591FAjwpBm",
+        url: "ims/renault_clio_ext.jpg",
         caption: "Renault Clio Mio exterior",
         alt: "Renault Clio 2014"
       }
