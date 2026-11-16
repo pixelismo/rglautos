@@ -238,10 +238,23 @@ body {
   z-index: 10;
 }
 
+#texto-footer {
+  padding-top: 40vh !important;
+}
+
 /* Adaptación responsive para pantallas medianas y móviles */
 @media (max-width: 900px) {
   .hero-banner-container {
-    height: auto;
+    height: 18rem;
+    max-width: 100%;
+  }
+
+  .hero-header {
+    width: 100%;
+    margin-bottom: 0rem;
+    margin-left: 0rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
   }
 
   .hero-clipped-image,
@@ -253,10 +266,59 @@ body {
   }
 
   .hero-notch-card {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    padding: 1.25rem 0 0 0;
+    bottom: unset;
+    top: 9rem;
+    left: 0px;
+    width: 90%;
+    background: #ffffffa8;
+    min-width: 135px;
+    max-width: 230px;
+    padding: 1rem 1rem 1rem 1rem;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: var(--color-ink-soft);
+  }
+
+  #contacto_header {
+    display: none;
+    ;
+  }
+
+  header a {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 0;
+    text-align: right;
+
+  }
+
+  #texto-footer {
+    padding-top: 10vh !important;
+  }
+
+  #texto-footer h3 {
+    font-size: 1rem;
+    margin-bottom: 0rem;
+  }
+
+  .hero-texto-card {
+    color: var(--color-paper-card);
+    position: absolute;
+    top: 6rem;
+    left: 1rem;
+    line-height: 0;
+  }
+
+  #hero-clipped-hover {
+    position: absolute;
+    width: 70%;
+    right: 20px;
+    bottom: -20px;
+    margin-left: 2rem;
   }
 
   .hero-floating-bottom {
@@ -268,9 +330,6 @@ body {
 }
 
 
-#texto-footer {
-  padding-top: 40vh !important;
-}
 
 /* Tipografías oficiales */
 .font-editorial-serif {

@@ -35,7 +35,8 @@ function initScrollHorizontal() {
   const mm = gsap.matchMedia();
 
   // Desktop (>= 768px): Pinned horizontal scroll con GSAP ScrollTrigger
-  mm.add("(min-width: 768px)", () => {
+  //mm.add("(min-width: 768px)", () => {
+  mm.add("(min-width: 0px)", () => {
     const calculateDistance = () => {
       const scrollWidth = track.scrollWidth;
       const clientWidth = window.innerWidth;
@@ -63,7 +64,7 @@ function initScrollHorizontal() {
 
   // Mobile (< 768px): Scroll nativo suave
   mm.add("(max-width: 767px)", () => {
-    gsap.set(track, { clearProps: "x" });
+    //gsap.set(track, { clearProps: "x" });
   });
 }
 
