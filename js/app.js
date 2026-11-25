@@ -535,15 +535,140 @@ function openVehicleModal(id) {
             <div class="flex items-center gap-2 mb-2">
               <span class="material-symbols-outlined text-[#0E5C8A]">account_balance</span>
               <h5 class="text-xs uppercase tracking-wider font-label font-bold text-[#0E5C8A]">
-                Financiación Banco Nación
+                Financiación Bancaria Disponible
               </h5>
             </div>
             <p class="text-xs text-[#2A526E] leading-relaxed mb-3 font-body">
-              Hasta 100% financiado o saldo en cuotas fijas en pesos / UVA. Consulta con DNI sin compromiso de compra.
+              Hasta 50% financiado en cuotas fijas en pesos (BNA, Francés, Santander, Santa Cruz).
             </p>
-            <div class="text-[11px] text-[#446A85] flex items-center gap-1.5 font-mono-data">
-              <span class="material-symbols-outlined text-[15px]">schedule</span>
-              <span>12 a 60 meses · Tasa diferencial Río Gallegos</span>
+            <div class="text-[11px] text-[#446A85] flex items-center justify-between font-mono-data mb-3">
+              <span class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 a 60 meses</span>
+              </span>
+              <span>Tasas desde 36% TNA</span>
+            </div>
+            
+            <!-- Botón Desplegable para Simular Crédito -->
+            <button 
+              type="button" 
+              onclick="toggleCreditSimulator('${vehicle.id}')"
+              id="btn-toggle-simulator"
+              class="w-full py-2.5 px-4 rounded-xl bg-[#0E5C8A] text-white hover:bg-[#0A486D] transition-all text-xs font-label font-bold flex items-center justify-center gap-2 shadow-sm">
+              <span class="material-symbols-outlined text-[17px]">calculate</span>
+              <span id="simulator-btn-label">Simular Crédito</span>
+              <span class="material-symbols-outlined text-[17px] transition-transform duration-200" id="simulator-btn-icon">expand_more</span>
+            </button>
+          </div>
+
+          <!-- Acordeón Desplegable: Simulador de Crédito -->
+          <div id="credit-simulator-wrapper" class="hidden transition-all duration-300">
+            <div class="p-5 rounded-[24px] bg-[#FFFFFF] border-2 border-[#1E382B]/15 shadow-md space-y-4">
+              
+              <div class="flex items-center justify-between border-b border-black/[0.06] pb-3">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[#C86D44] text-[20px]">tune</span>
+                  <span class="text-xs uppercase font-label font-bold text-[#1D201D] tracking-wider">Simulador de Crédito</span>
+                </div>
+                <span class="text-[10px] bg-[#FAF8F5] px-2 py-0.5 rounded text-[#7D827C] font-mono-data">Sistema Francés</span>
+              </div>
+
+              <!-- 1. Valor Total del Vehículo -->
+              <div>
+                <label class="block text-[11px] font-label font-semibold text-[#5A605A] uppercase tracking-wider mb-1">
+                  Valor Estimado del Auto ($)
+                </label>
+                <div class="relative">
+                  <span class="absolute left-3 top-2.5 text-xs font-bold text-[#7D827C]">$</span>
+                  <input 
+                    type="number" 
+                    id="sim-car-price" 
+                    class="w-full pl-7 pr-3 py-2 text-sm font-mono-data font-bold rounded-xl border border-black/15 bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#1E382B]/30"
+                    placeholder="Ej. 16000000"
+                    oninput="recalcCreditSimulator('${vehicle.id}')"
+                  />
+                </div>
+                ${isConsultar ? `<p class="text-[10px] text-[#C86D44] mt-1 font-body">Ingresá el valor aproximado para estimar tu entrega y cuotas.</p>` : ''}
+              </div>
+
+              <!-- 2. Banco y Tasa -->
+              <div>
+                <label class="block text-[11px] font-label font-semibold text-[#5A605A] uppercase tracking-wider mb-1">
+                  Entidad Bancaria & Tasa
+                </label>
+                <select 
+                  id="sim-bank" 
+                  class="w-full px-3 py-2 text-xs font-body font-semibold rounded-xl border border-black/15 bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#1E382B]/30 cursor-pointer"
+                  onchange="recalcCreditSimulator('${vehicle.id}')">
+                  ${BANK_RATES_DATA.map(b => `<option value="${b.id}" data-rate="${b.rate}">${b.name} (${b.rate}% TNA)</option>`).join('')}
+                </select>
+                <p id="sim-bank-note" class="text-[10px] text-[#7D827C] mt-1 font-body italic"></p>
+              </div>
+
+              <!-- 3. Entrega Inicial y Monto a Financiar -->
+              <div class="grid grid-cols-2 gap-3 pt-1">
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <label class="text-[10px] font-label font-semibold text-[#5A605A] uppercase tracking-wider">
+                      Entrega Inicial
+                    </label>
+                    <span id="sim-downpayment-pct" class="text-[10px] font-mono-data text-[#C86D44] font-bold">50%</span>
+                  </div>
+                  <input 
+                    type="number" 
+                    id="sim-downpayment" 
+                    class="w-full px-2.5 py-1.5 text-xs font-mono-data rounded-xl border border-black/15 bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#1E382B]/30"
+                    oninput="recalcCreditSimulatorFromDownpayment('${vehicle.id}')"
+                  />
+                </div>
+
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <label class="text-[10px] font-label font-semibold text-[#5A605A] uppercase tracking-wider">
+                      Saldo Financiado
+                    </label>
+                    <span id="sim-loan-pct" class="text-[10px] font-mono-data text-[#1E382B] font-bold">50%</span>
+                  </div>
+                  <input 
+                    type="number" 
+                    id="sim-loan-amount" 
+                    class="w-full px-2.5 py-1.5 text-xs font-mono-data rounded-xl border border-black/15 bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#1E382B]/30"
+                    oninput="recalcCreditSimulatorFromLoan('${vehicle.id}')"
+                  />
+                </div>
+              </div>
+
+              <!-- 4. Selector de Plazos -->
+              <div>
+                <label class="block text-[11px] font-label font-semibold text-[#5A605A] uppercase tracking-wider mb-1.5">
+                  Plazo en Meses
+                </label>
+                <div class="grid grid-cols-5 gap-1.5" id="sim-months-selector">
+                  ${[12, 24, 36, 48, 60].map(m => `
+                    <button 
+                      type="button" 
+                      onclick="selectSimulatorMonths(${m}, '${vehicle.id}')"
+                      data-months="${m}"
+                      class="sim-month-btn py-1.5 rounded-lg text-xs font-mono-data font-bold border ${m === 48 ? 'bg-[#1E382B] text-white border-[#1E382B]' : 'bg-[#FAF8F5] text-[#1D201D] border-black/10 hover:border-black/30'} transition-colors">
+                      ${m}m
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- 5. Resultado de la Cuota -->
+              <div class="p-4 rounded-2xl bg-[#F4F1EA] border border-black/[0.06] text-center">
+                <span class="text-[10px] font-label font-bold text-[#7D827C] uppercase tracking-wider block mb-0.5">
+                  Cuota Mensual Estimada (Sistema Francés)
+                </span>
+                <div id="sim-monthly-quote" class="text-2xl font-headline font-black text-[#1E382B] tracking-tight">
+                  Calculando...
+                </div>
+                <div id="sim-summary-subtext" class="text-[10px] text-[#5E635D] font-mono-data mt-1">
+                  --
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -552,12 +677,13 @@ function openVehicleModal(id) {
         <!-- Botón de Conversión WhatsApp -->
         <div class="mt-6 pt-5 border-t border-black/[0.06] space-y-3">
           <a 
+            id="modal-whatsapp-link"
             href="${buildWhatsAppLink(vehicle)}" 
             target="_blank" 
             rel="noopener"
             class="btn-whatsapp w-full py-3.5 px-6 rounded-full flex items-center justify-center gap-2 text-xs uppercase tracking-wider font-label font-bold shadow-md">
             <span class="material-symbols-outlined text-xl">chat</span>
-            <span>Consultar por WhatsApp (${RGL_WHATSAPP_DISPLAY})</span>
+            <span id="modal-whatsapp-text">Consultar por WhatsApp (${RGL_WHATSAPP_DISPLAY})</span>
           </a>
           <p class="text-[11px] text-center text-[#7C817B] font-body">
             Respuesta inmediata de nuestro equipo en Río Gallegos.
@@ -585,6 +711,198 @@ function closeVehicleModal() {
   if (modal) {
     modal.classList.add('hidden');
     document.body.style.overflow = '';
+  }
+}
+
+/**
+ * 06.b Lógica del Simulador de Crédito en Ficha
+ */
+let currentSimMonths = 48;
+
+function getBasePriceFromVehicle(vehicle) {
+  if (!vehicle) return 0;
+  if (vehicle.priceType === 'desde') {
+    // Ej: "Desde $15.000.000"
+    const digits = vehicle.priceDisplay.replace(/\D/g, '');
+    return digits ? parseInt(digits, 10) : 0;
+  }
+  if (vehicle.priceType === 'entrega') {
+    // Si la entrega es el 50%, el valor estimado total es el doble de la entrega
+    // Ej: "Entrega $10M" -> entrega $10.000.000 -> auto $20.000.000
+    // Ej: "Entrega $12–13M" -> entrega $12.500.000 -> auto $25.000.000
+    if (vehicle.priceDisplay.includes('12–13M')) return 25000000;
+    if (vehicle.priceDisplay.includes('10–11M')) return 21000000;
+    if (vehicle.priceDisplay.includes('10M')) return 20000000;
+    if (vehicle.priceDisplay.includes('5–7M')) return 12000000;
+  }
+  return 0; // 'consultar' u otros
+}
+
+function toggleCreditSimulator(vehicleId) {
+  const wrapper = document.getElementById('credit-simulator-wrapper');
+  const btnLabel = document.getElementById('simulator-btn-label');
+  const btnIcon = document.getElementById('simulator-btn-icon');
+  if (!wrapper) return;
+
+  const isHidden = wrapper.classList.contains('hidden');
+  if (isHidden) {
+    wrapper.classList.remove('hidden');
+    if (btnLabel) btnLabel.textContent = "Ocultar Simulador";
+    if (btnIcon) btnIcon.style.transform = "rotate(180deg)";
+    
+    // Inicializar inputs según el vehículo
+    const vehicle = VEHICLES_DATA.find(v => v.id === vehicleId);
+    const carPriceInput = document.getElementById('sim-car-price');
+    const basePrice = getBasePriceFromVehicle(vehicle);
+    
+    if (carPriceInput && (!carPriceInput.value || carPriceInput.value == 0)) {
+      if (basePrice > 0) {
+        carPriceInput.value = basePrice;
+      }
+    }
+    recalcCreditSimulator(vehicleId);
+  } else {
+    wrapper.classList.add('hidden');
+    if (btnLabel) btnLabel.textContent = "Simular Crédito";
+    if (btnIcon) btnIcon.style.transform = "rotate(0deg)";
+  }
+}
+
+function selectSimulatorMonths(months, vehicleId) {
+  currentSimMonths = months;
+  const buttons = document.querySelectorAll('.sim-month-btn');
+  buttons.forEach(btn => {
+    const m = parseInt(btn.getAttribute('data-months'), 10);
+    if (m === months) {
+      btn.className = "sim-month-btn py-1.5 rounded-lg text-xs font-mono-data font-bold border bg-[#1E382B] text-white border-[#1E382B] transition-colors";
+    } else {
+      btn.className = "sim-month-btn py-1.5 rounded-lg text-xs font-mono-data font-bold border bg-[#FAF8F5] text-[#1D201D] border-black/10 hover:border-black/30 transition-colors";
+    }
+  });
+  recalcCreditSimulator(vehicleId);
+}
+
+function recalcCreditSimulator(vehicleId) {
+  const vehicle = VEHICLES_DATA.find(v => v.id === vehicleId);
+  const carPriceInput = document.getElementById('sim-car-price');
+  const downpaymentInput = document.getElementById('sim-downpayment');
+  const loanInput = document.getElementById('sim-loan-amount');
+  
+  if (!carPriceInput || !downpaymentInput || !loanInput) return;
+
+  const total = parseFloat(carPriceInput.value) || 0;
+  
+  if (total > 0) {
+    // 50% entrega y 50% saldo por defecto
+    const loan = Math.round(total * 0.5);
+    const down = total - loan;
+    downpaymentInput.value = down;
+    loanInput.value = loan;
+    updateSimulatorPercentages(down, loan, total);
+    computeFrenchQuote(loan, vehicle);
+  } else {
+    downpaymentInput.value = 0;
+    loanInput.value = 0;
+    updateSimulatorPercentages(0, 0, 0);
+    computeFrenchQuote(0, vehicle);
+  }
+}
+
+function recalcCreditSimulatorFromDownpayment(vehicleId) {
+  const vehicle = VEHICLES_DATA.find(v => v.id === vehicleId);
+  const carPriceInput = document.getElementById('sim-car-price');
+  const downpaymentInput = document.getElementById('sim-downpayment');
+  const loanInput = document.getElementById('sim-loan-amount');
+  if (!carPriceInput || !downpaymentInput || !loanInput) return;
+
+  const total = parseFloat(carPriceInput.value) || 0;
+  const down = parseFloat(downpaymentInput.value) || 0;
+  const loan = Math.max(0, total - down);
+  loanInput.value = loan;
+  updateSimulatorPercentages(down, loan, total);
+  computeFrenchQuote(loan, vehicle);
+}
+
+function recalcCreditSimulatorFromLoan(vehicleId) {
+  const vehicle = VEHICLES_DATA.find(v => v.id === vehicleId);
+  const carPriceInput = document.getElementById('sim-car-price');
+  const downpaymentInput = document.getElementById('sim-downpayment');
+  const loanInput = document.getElementById('sim-loan-amount');
+  if (!carPriceInput || !downpaymentInput || !loanInput) return;
+
+  const total = parseFloat(carPriceInput.value) || 0;
+  const loan = parseFloat(loanInput.value) || 0;
+  const down = Math.max(0, total - loan);
+  downpaymentInput.value = down;
+  updateSimulatorPercentages(down, loan, total);
+  computeFrenchQuote(loan, vehicle);
+}
+
+function updateSimulatorPercentages(down, loan, total) {
+  const downPctEl = document.getElementById('sim-downpayment-pct');
+  const loanPctEl = document.getElementById('sim-loan-pct');
+  if (!downPctEl || !loanPctEl) return;
+
+  if (total > 0) {
+    const dPct = Math.round((down / total) * 100);
+    const lPct = Math.round((loan / total) * 100);
+    downPctEl.textContent = `${dPct}%`;
+    loanPctEl.textContent = `${lPct}%`;
+  } else {
+    downPctEl.textContent = "50%";
+    loanPctEl.textContent = "50%";
+  }
+}
+
+function computeFrenchQuote(loanAmount, vehicle) {
+  const bankSelect = document.getElementById('sim-bank');
+  const bankNoteEl = document.getElementById('sim-bank-note');
+  const quoteEl = document.getElementById('sim-monthly-quote');
+  const subtextEl = document.getElementById('sim-summary-subtext');
+  const whatsappLink = document.getElementById('modal-whatsapp-link');
+  const whatsappText = document.getElementById('modal-whatsapp-text');
+
+  if (!bankSelect || !quoteEl) return;
+
+  const selectedBankId = bankSelect.value;
+  const bankData = BANK_RATES_DATA.find(b => b.id === selectedBankId) || BANK_RATES_DATA[0];
+  
+  if (bankNoteEl) {
+    bankNoteEl.textContent = bankData.note;
+  }
+
+  const n = currentSimMonths;
+  const tna = bankData.rate; // Ej: 46%
+
+  if (loanAmount <= 0) {
+    quoteEl.textContent = "Ingresá un valor";
+    if (subtextEl) subtextEl.textContent = "Completá el valor para calcular la cuota";
+    return;
+  }
+
+  // Tasa Efectiva Mensual (i = TNA / 12 / 100)
+  const i = (tna / 100) / 12;
+  
+  // Fórmula Sistema Francés: Cuota = Saldo * [ i * (1 + i)^n ] / [ (1 + i)^n - 1 ]
+  const factor = Math.pow(1 + i, n);
+  const monthlyQuote = Math.round(loanAmount * (i * factor) / (factor - 1));
+
+  const formatCurrency = (val) => new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(val);
+
+  quoteEl.textContent = formatCurrency(monthlyQuote);
+
+  if (subtextEl) {
+    subtextEl.textContent = `${n} cuotas fijas de ${formatCurrency(monthlyQuote)} · Financiando ${formatCurrency(loanAmount)} al ${tna}% TNA (${bankData.name})`;
+  }
+
+  // Actualizar link de WhatsApp con el mensaje personalizado de la simulación
+  if (whatsappLink && vehicle) {
+    const downpaymentVal = parseFloat(document.getElementById('sim-downpayment')?.value) || 0;
+    const simMessage = `Hola RGL Cars! Me interesa el ${vehicle.brand} ${vehicle.model} ${vehicle.version} (${vehicle.year}). Hice una simulación de crédito con ${bankData.name} con una entrega inicial de ${formatCurrency(downpaymentVal)} y saldo en ${n} cuotas fijas estimadas de ${formatCurrency(monthlyQuote)}. ¿Podrán asesorarme para iniciar la solicitud?`;
+    whatsappLink.href = buildWhatsAppLink(vehicle, simMessage);
+    if (whatsappText) {
+      whatsappText.textContent = `Consultar con Simulación de Crédito (${RGL_WHATSAPP_DISPLAY})`;
+    }
   }
 }
 

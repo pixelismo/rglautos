@@ -81,7 +81,7 @@ const FOOTER_VIDEO_CONFIG = {
   // Altura del track en vh (300vh = 100vh de pantalla fija + 200vh de scroll interactivo):
   // - Subir a 350 o 400 si querés que el video avance MÁS LENTO (requiere más scroll).
   // - Bajar a 240 o 260 si querés que avance MÁS RÁPIDO (requiere menos scroll).
-  trackHeightVh: 400,
+  trackHeightVh: 150,
 
   // Comportamiento del scrub:
   // - true: respuesta 1:1 inmediata y directa según el movimiento del scroll.

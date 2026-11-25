@@ -312,9 +312,19 @@ const VEHICLES_DATA = [
 ];
 
 // Helper para armar link de WhatsApp
+const BANK_RATES_DATA = [
+  { id: "bna", name: "Banco Nación", rate: 46, note: "Tasa general préstamos personales / prendarios" },
+  { id: "bna-cliente", name: "Banco Nación (Cliente)", rate: 36, note: "Tasa preferencial para haberes en BNA" },
+  { id: "frances", name: "BBVA Francés", rate: 42, note: "Prendario prendario automotores" },
+  { id: "santander", name: "Banco Santander", rate: 47, note: "Crédito automotor cuota fija" },
+  { id: "santacruz", name: "Banco Santa Cruz", rate: 47, note: "Línea provincial Santa Cruz" }
+];
+
 function buildWhatsAppLink(vehicle, customText = "") {
   let message = "";
-  if (vehicle) {
+  if (customText) {
+    message = customText;
+  } else if (vehicle) {
     message = `Hola RGL Cars! Me interesa consultar por el ${vehicle.brand} ${vehicle.model} ${vehicle.version} (${vehicle.year}) que vi en su web. ¿Sigue disponible?`;
     if (vehicle.priceType === 'entrega') {
       message += ` Quisiera saber más sobre la entrega de ${vehicle.priceDisplay} y la financiación con Banco Nación.`;
